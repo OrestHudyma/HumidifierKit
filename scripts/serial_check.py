@@ -10,9 +10,11 @@ import time
 import serial
 
 port = sys.argv[1] if len(sys.argv) > 1 else "COM3"
-with serial.Serial(port, 115200, timeout=0.3) as device:
-    device.dtr = False
-    device.rts = False
+device = serial.Serial(None, 115200, timeout=0.3)
+device.dtr = False
+device.rts = False
+device.port = port
+with device:
     time.sleep(1)
 
     def command(text):

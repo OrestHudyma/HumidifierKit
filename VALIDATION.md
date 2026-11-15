@@ -26,3 +26,15 @@ coordinator loss/recovery and long-duration stability. Native upstream inclusion
 is pending. The installed converter is external.
 
 Logs and build artifacts are under `work/` and `build/` (gitignored).
+
+## OTA implementation checks
+
+- Firmware 0.2.2 builds locally with Arduino-ESP32 3.3.7.
+- GitHub Actions Linux build and OTA package tests passed.
+- Zigbee2MQTT's own OTA parser accepted the package and its app payload matched
+  the compiled application byte-for-byte.
+- OTA client on endpoint 1, development manufacturer 0xFFF1, image type 0x484B.
+- 50-byte blocks are used to avoid the pinned SDK's subelement-header boundary
+  limitation observed with 64-byte blocks.
+- Hardware OTA transfer from 0.2.1/app0 to 0.2.2 is in progress. Completion and
+  boot-slot switching have not yet been confirmed.
