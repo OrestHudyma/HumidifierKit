@@ -75,6 +75,11 @@ MQTT set payload (to `zigbee2mqtt/<friendly_name>/set`):
 
 `water_empty_tank` reports a boolean on changes and every 60 seconds while joined.
 Home Assistant discovery exposes three switches, a binary sensor and OTA update.
+The switches are labeled **Power**, **Backlight Dim** (ON dims the backlight),
+and **Max Power** (ON overrides the output control knob with maximum mist output).
+Home Assistant receives matching names and power/brightness/fan icons. Zigbee2MQTT
+WindFront uses its built-in star icon for `state`; individual expose icons cannot
+be overridden by the converter. MQTT property names remain unchanged.
 For the product illustration, copy `assets/humidifierkit.png` to
 `device_icons/humidifierkit.png` and set the device's `icon` option to that path.
 
