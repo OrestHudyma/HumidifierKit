@@ -36,5 +36,12 @@ Logs and build artifacts are under `work/` and `build/` (gitignored).
 - OTA client on endpoint 1, development manufacturer 0xFFF1, image type 0x484B.
 - 50-byte blocks are used to avoid the pinned SDK's subelement-header boundary
   limitation observed with 64-byte blocks.
-- Hardware OTA transfer from 0.2.1/app0 to 0.2.2 is in progress. Completion and
-  boot-slot switching have not yet been confirmed.
+- Hardware OTA transfer from 0.2.1/app0 to 0.2.2/app1 completed successfully.
+  Verified on 2026-11-16 via USB: `fw=0.2.2`, `version=0x00000202`,
+  `partition=app1`, `joined=1`, `active=0`.
+- Zigbee2MQTT reported installed_version 514 and update state idle.
+- All eight independent output combinations passed after OTA; an MQTT/Zigbee
+  command was separately verified against GPIO readback (0,1,1).
+- All outputs returned OFF after testing. Home Assistant OTA update discovery
+  was present. The full wireless transfer took approximately 72 minutes on
+  this network; completion was not inferred from a timer or progress estimate.
